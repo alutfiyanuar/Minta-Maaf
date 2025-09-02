@@ -4,17 +4,77 @@
   box-sizing: border-box;
 }
 
-html,
 body {
   min-height: 100vh;
-  min-height: 100vh;
-  font-family: "Handlee", "Sacramento", "Work Sans", sans-serif;
+  min-height: -webkit-fill-available; /* Untuk iOS/Android */
+  font-family: "Handlee", "Sacramento", "Work Sans", cursive;
+  background-color: #fffaf0;
+  color: #555;
+  overflow: hidden; /* 🔒 Cegah scroll apapun */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-#gambar {
-  width: 30vh;
-  height: 30vh;
+.event {
+  min-height: 100vh;
+  padding-top: 6rem;
+  padding-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Perbaikan iframe */
+iframe {
   background-image: url(my-bad.gif);
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 300px; /* Lebar tetap yang aman */
+  height: 250px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.description {
+  font-family: "Handlee", cursive;
+  font-size: 1.3rem;
+  color: #555;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Tombol */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn-lg {
+  font-size: 1.2rem;
+  padding: 10px 25px;
+  border-radius: 50px;
+  transition: transform 0.2s ease;
+}
+
+/* Tombol "Ga" hanya bergeser sedikit */
+#btn_gamau {
+  transition: transform 0.3s ease; /* Gunakan transform, bukan left */
+  position: relative; /* Penting: agar transform tidak ganggu layout */
+  z-index: 1;
 }
