@@ -2,7 +2,10 @@
 <html lang="id">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>Minta maaf ke Putri</title>
     <link rel="icon" href="img/love-letter.png" type="image/x-icon" />
 
@@ -28,61 +31,71 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="maaf.css" />
   </head>
-  <body class="d-flex flex-column min-vh-100">
-    <!-- Hero Section -->
-    <section
-      class="hero d-flex flex-column justify-content-center align-items-center text-center py-5"
-    >
+  <body>
+    <section id="event" class="event">
       <div class="container">
-        <h1 class="mb-4">Putrii, kamu masih marah sama aku?</h1>
-        <div id="gambar" class="mb-4"></div>
-      </div>
-    </section>
+        <div class="row justify-content-center">
+          <div class="col-md-8 col10 text-center">
+            <h2>Putrii, kamu masih marah sama aku?</h2>
 
-    <!-- Apology Section -->
-    <section
-      class="d-flex flex-column justify-content-center align-items-center text-center py-5"
-    >
-      <div class="row justify-content-center">
-        <h1 class="mb-4">Aku minta maaf yaaa, plisss</h1>
-        <div class="d-flex justify-content-center gap-3 flex-wrap">
-          <button
-            type="button"
-            class="btn btn-primary btn-lg"
-            id="btn_mau"
-            onclick="alert('Makasih sayang :D')"
-          >
-            Iya
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-lg"
-            id="btn_gamau"
-            onclick="gamau(this)"
-          >
-            Ga
-          </button>
+            <iframe
+              width="300"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <p class="description fade-up">Aku minta maaf yaaa, plisss</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+          <div class="button-container">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              id="btn_mau"
+              onclick="alert('Makasih sayang :D'); window.location.href='https://wa.link/phv9ry';"
+            >
+              Iya aku maafin
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-lg"
+              id="btn_gamau"
+              onclick="gamau(this)"
+            >
+              Ga
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Script -->
     <script>
+      let clickCount = 0; // Hitung klik: 0 → bawah, 1 → kiri, 2 → kembali
+
       function gamau(button) {
-        const mauButton = document.getElementById("btn_mau");
-        const container = mauButton.parentElement;
-        const rect = container.getBoundingClientRect();
+        clickCount++;
 
-        // Pastikan posisi random tetap dalam container
-        const randomX = Math.random() * (rect.width - 100); // lebar tombol ~100px
-        const randomY = Math.random() * (rect.height - 50); // tinggi tombol ~50px
-
-        button.style.position = "relative";
-        button.style.transform = "translate(0, 0)";
-        button.style.left = `${randomX}px`;
-        button.style.top = `${randomY}px`;
+        if (clickCount === 1) {
+          // Gerakan 1: Turun sedikit
+          button.style.transform = "translateY(60px)";
+          button.textContent = "Gamau";
+        } else if (clickCount === 2) {
+          // Gerakan 2: Geser ke kiri (dekat tombol "Iya")
+          button.style.transform = "translateY(-60px)";
+          button.textContent = "Yakin?";
+        } else {
+          // Gerakan 3: Kembali ke posisi normal
+          button.style.transform = "translateX(70px)";
+          button.textContent = "Ga";
+          clickCount = 0; // Reset agar berulang
+        }
       }
     </script>
   </body>
