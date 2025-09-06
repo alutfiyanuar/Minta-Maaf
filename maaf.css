@@ -33,6 +33,7 @@ body {
 
 /* Perbaikan iframe */
 iframe {
+  background-color: #fff;
   background-image: url(my-bad.gif);
   background-size: contain;
   background-position: center;
