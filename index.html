@@ -84,15 +84,15 @@
 
         if (clickCount === 1) {
           // Gerakan 1: Turun sedikit
-          button.style.transform = "translateY(60px)";
-          button.textContent = "Gamau";
+          button.style.transform = "translate(-180px,70px)";
+          button.textContent = "Eits ngga kena";
         } else if (clickCount === 2) {
           // Gerakan 2: Geser ke kiri (dekat tombol "Iya")
           button.style.transform = "translateY(-60px)";
           button.textContent = "Yakin?";
         } else {
           // Gerakan 3: Kembali ke posisi normal
-          button.style.transform = "translateX(70px)";
+          button.style.transform = "translate(0)";
           button.textContent = "Ga";
           clickCount = 0; // Reset agar berulang
         }
